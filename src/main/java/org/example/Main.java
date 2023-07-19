@@ -8,14 +8,13 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Hello world!");
 
-        User user = new User();
-        user.setName("Ivan");
-        user.setAge(20);
+        User user = new User("Ivan");
         HibernateUtils hibernateUtils  = new HibernateUtils();
-        try (Session session = hibernateUtils.getSessionFactory().openSession();) {
+        try (Session session = hibernateUtils.getSessionFactory().openSession()) {
             session.beginTransaction();
             session.persist(user);
             session.getTransaction().commit();
         }
+
     }
 }
